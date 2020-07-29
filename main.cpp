@@ -1,8 +1,13 @@
 #include <iostream>
 #include "Array.h"
 int main(int argc, const char * argv[]) {
-    Array<int> a(5);
+    std::cout << std::boolalpha;
 
-    std::cout << a.size()
+    Array<int> a;
+
+    std::cout << a << std::endl;
     return 0;
 }
+
+// g++ main.cpp -o main
+//./main
