@@ -16,6 +16,18 @@ private:
     T* arr;
     int s;
     int c;
+    void resize(int new_capacity) {
+        //create new array
+        T* new_arr = new T[new_capacity];
+        //copy over old elements
+        for (int i = 0; i < s; i++) {
+            new_arr[i] = arr[i];
+        }
+        //free memory
+        delete[] arr;
+        //reassign to new array
+        arr = new_arr;
+    }
 public:
     //default constructor
     Array() {
@@ -55,8 +67,16 @@ public:
         if (i < 0 || i >= c){
             throw std::out_of_range("Error, index out of range");
         }
-
         return arr[i];
+    }
+
+    //adds an item to end of array and returns new length
+    int push(T el) {
+        if (s == c) {
+            resize((c*=2));
+        }
+        arr[s++] = el;
+        return s;
     }
 };
 #endif /* Array_h */

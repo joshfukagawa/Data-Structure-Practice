@@ -5,6 +5,9 @@ int main(int argc, const char * argv[]) {
 
     Array<int> a;
 
+    for (int i = 0; i < 18; i++) {
+        a.push(i+1);
+    }
     std::cout << a << std::endl;
     return 0;
 }
