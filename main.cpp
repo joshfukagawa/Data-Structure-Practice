@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Array.h"
+#include <vector>
 int main(int argc, const char * argv[]) {
     std::cout << std::boolalpha;
 
@@ -9,7 +10,8 @@ int main(int argc, const char * argv[]) {
         a.push(i + 1);
     }
 
-    std::cout << "Array: " << a.insert(4, 9000) << std::endl;
+    std::cout << "Array: " << a.prepend(9000) << std::endl;
+    std::cout << "Array: " << a << std::endl;
     return 0;
 }
 

@@ -6,8 +6,8 @@ class Array {
     //overload stream insertion operator
     friend std::ostream& operator<< (std::ostream &out, const Array<T> &array) {
         out << '[';
-        for (int i = 0; i < array.c; i++) {
-            out << array.arr[i] << ((i != array.c-1) ? (", ") : ("")) ;
+        for (int i = 0; i < array.s; i++) {
+            out << array.arr[i] << ((i != array.s-1) ? (", ") : ("")) ;
         }
         out << ']';
         return out;
@@ -78,8 +78,12 @@ public:
         arr[s++] = el;
         return s;
     }
-    //insert an item at an index and returns the new length
+    //insert an item at an existing index and returns the new length
     int insert(int idx, T el) {
+        //Throw err if idx >= size
+        if (idx >= s || idx < 0) {
+            throw std::out_of_range("Error, index does not exist");
+        }
         if (s == c) {
             resize((c*=2));
         }
@@ -87,6 +91,14 @@ public:
             arr[i] = (i != idx) ? (arr[i-1]) : (el);
         }
         return ++s;
+    }
+    //insert an item at index 0 and return size
+    int prepend(T el) {
+        return insert(0, el);
+    }
+    //remove item from last index and return it
+    T pop() {
+
     }
 };
 #endif /* Array_h */
