@@ -78,5 +78,9 @@ public:
         arr[s++] = el;
         return s;
     }
+    //insert an item at an index and returns the new length
+    int insert() {
+
+    }
 };
 #endif /* Array_h */
