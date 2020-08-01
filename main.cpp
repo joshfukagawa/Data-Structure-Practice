@@ -5,10 +5,11 @@ int main(int argc, const char * argv[]) {
 
     Array<int> a;
 
-    for (int i = 0; i < 18; i++) {
-        a.push(i+1);
+    for (int i = 0; i < 11; i++) {
+        a.push(i + 1);
     }
-    std::cout << a << std::endl;
+
+    std::cout << "Array: " << a.insert(4, 9000) << std::endl;
     return 0;
 }
 

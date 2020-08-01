@@ -79,8 +79,14 @@ public:
         return s;
     }
     //insert an item at an index and returns the new length
-    int insert() {
-
+    int insert(int idx, T el) {
+        if (s == c) {
+            resize((c*=2));
+        }
+        for (int i = s + 1; i >= idx; i--) {
+            arr[i] = (i != idx) ? (arr[i-1]) : (el);
+        }
+        return ++s;
     }
 };
 #endif /* Array_h */
