@@ -139,6 +139,7 @@ public:
     int remove(T el) {
         int delete_count = 0;
         for (int i = 0; i < s; i++) {
+            //if val matches el, delete it, increase delete count, adjust index
             if (arr[i] == el) {
                 delete_idx(i);
                 delete_count++;
@@ -146,6 +147,15 @@ public:
             }
         }
         return delete_count;
+    }
+    //return index of val if found, else return -1
+    int find(T el) {
+        for (int i = 0; i < s; i++) {
+            if (arr[i] == el) {
+                return i;
+            }
+        }
+            return -1;
     }
 };
 #endif /* Array_h */

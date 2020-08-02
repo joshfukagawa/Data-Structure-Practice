@@ -13,8 +13,7 @@ int main(int argc, const char * argv[]) {
     }
 
     std::cout << "Array: " << a << std::endl;
-    std::cout << a.remove(2) << std::endl;
-    std::cout << "Array: " << a << std::endl;
+    std::cout << a.find(20) << std::endl;
     return 0;
 }
 
