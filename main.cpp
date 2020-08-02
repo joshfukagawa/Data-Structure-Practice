@@ -10,8 +10,9 @@ int main(int argc, const char * argv[]) {
         a.push(i + 1);
     }
 
-    std::cout << "Array: " << a.prepend(9000) << std::endl;
+    std::cout << "Array: " << a.pop() << std::endl;
     std::cout << "Array: " << a << std::endl;
+    std::cout << "Array: " << a.size() << std::endl;
     return 0;
 }
 

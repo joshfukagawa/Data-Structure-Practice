@@ -72,6 +72,7 @@ public:
 
     //adds an item to end of array and returns new length
     int push(T el) {
+        //resize if at capacity
         if (s == c) {
             resize((c*=2));
         }
@@ -80,13 +81,15 @@ public:
     }
     //insert an item at an existing index and returns the new length
     int insert(int idx, T el) {
-        //Throw err if idx >= size
+        //Throw err if index is out of range
         if (idx >= s || idx < 0) {
             throw std::out_of_range("Error, index does not exist");
         }
+        //resize if at capacity
         if (s == c) {
             resize((c*=2));
         }
+        //insert item and shift trailing right
         for (int i = s + 1; i >= idx; i--) {
             arr[i] = (i != idx) ? (arr[i-1]) : (el);
         }
@@ -102,13 +105,27 @@ public:
     }
     //
     T delete_idx(int idx) {
+        //throw err if empty
         if (s == 0) {
             throw std::length_error("Error, the array is empty");
         }
-        if (s == (c * 0.25)) {
+        //throw error if invalid idx
+        if (idx >= s || idx < 0) {
+            throw std::out_of_range("Error, index does not exist");
+        }
+        //save reference to item to delete
+        T deleted_item = arr[idx];
+        //remove item by shift trailing left
+        for (int i = idx; i < s; i++) {
+            arr[i] = arr[i + 1];
+        }
+        //decrement size
+        s--;
+        //resize if were at 1/4 capacity
+        if ((s) == (c * 0.25)) {
             resize((c*=0.5));
         }
-        for (int i = 0; i < )
+        return deleted_item;
     }
 };
 #endif /* Array_h */
