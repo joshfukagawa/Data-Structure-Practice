@@ -127,11 +127,25 @@ public:
         }
         return deleted_item;
     }
+    //return pointer to beginning
     T* begin() {
         return arr;
     }
+    //return pointer to sequence end + 1
     T* end() {
         return arr + s;
+    }
+    //remove item by value and return count of items removed
+    int remove(T el) {
+        int delete_count = 0;
+        for (int i = 0; i < s; i++) {
+            if (arr[i] == el) {
+                delete_idx(i);
+                delete_count++;
+                i--;
+            }
+        }
+        return delete_count;
     }
 };
 #endif /* Array_h */
