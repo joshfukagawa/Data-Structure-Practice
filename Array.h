@@ -98,7 +98,17 @@ public:
     }
     //remove item from last index and return it
     T pop() {
-
+        return delete_idx(s-1);
+    }
+    //
+    T delete_idx(int idx) {
+        if (s == 0) {
+            throw std::length_error("Error, the array is empty");
+        }
+        if (s == (c * 0.25)) {
+            resize((c*=0.5));
+        }
+        for (int i = 0; i < )
     }
 };
 #endif /* Array_h */
