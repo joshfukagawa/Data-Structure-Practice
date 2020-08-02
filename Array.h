@@ -103,7 +103,7 @@ public:
     T pop() {
         return delete_idx(s-1);
     }
-    //
+    //delete item at index
     T delete_idx(int idx) {
         //throw err if empty
         if (s == 0) {
@@ -126,6 +126,12 @@ public:
             resize((c*=0.5));
         }
         return deleted_item;
+    }
+    T* begin() {
+        return arr;
+    }
+    T* end() {
+        return arr + s;
     }
 };
 #endif /* Array_h */
