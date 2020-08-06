@@ -7,7 +7,12 @@
 int main(int argc, const char * argv[]) {
     std::cout << std::boolalpha;
     SList<int> list;
-    std::cout << list.empty() << std::endl;
+    list.push_front(2);
+    list.push_front(6);
+    list.push_front(5);
+    list.push_front(0);
+
+    std::cout << list << std::endl;
     return 0;
 }
 
