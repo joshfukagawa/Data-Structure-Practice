@@ -23,8 +23,11 @@ public:
       tail = nullptr;
       size = 0;
     }
-    int size () {
+    int get_size () {
         return size;
+    }
+    bool empty () {
+        return size == 0;
     }
 };
 #endif /* SList_h */

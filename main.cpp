@@ -7,7 +7,7 @@
 int main(int argc, const char * argv[]) {
     std::cout << std::boolalpha;
     SList<int> list;
-    std::cout << list << std::endl;
+    std::cout << list.empty() << std::endl;
     return 0;
 }
 
