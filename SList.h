@@ -101,5 +101,21 @@ public:
             return temp_data;
          }
     }
+    int push_back(T val) {
+        SListNode<T>* new_node = new SListNode<T>(val);
+        if (head == nullptr && tail == nullptr) {
+            //if list is empty, set head and tail to new node
+            head = new_node;
+            tail = new_node;
+            return ++size;
+        } else {
+            //if list is not empty
+            //push new node past tail
+            tail->next = new_node;
+            //new node becomes tail
+            tail = new_node;
+            return ++size;
+        }
+    }
 };
 #endif /* SList_h */
