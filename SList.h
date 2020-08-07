@@ -67,5 +67,39 @@ public:
             size++;
         }
     }
+    T pop_front () {
+         if (head == nullptr && tail == nullptr) {
+             //if list is empty, throw exception
+             throw std::out_of_range("Error, empty list");
+         }
+
+         if (head == tail) {
+            //if list only has one item left
+            //copy data
+            T temp_data = head->data;
+            //delete node
+            delete head;
+            //set head and tail to null
+            head = nullptr;
+            tail = nullptr;
+            //decrement size
+            size--;
+            //return deleted data
+            return temp_data;
+         } else {
+             //list has more than one item
+            //create temp ref to node and data
+            T temp_data = head->data;
+            SListNode<T>* temp_node = head;
+            //set head to the next node
+            head = temp_node->next;
+            //delete old head node
+            delete temp_node;
+            //decrement size
+            size--;
+            //return deleted data
+            return temp_data;
+         }
+    }
 };
 #endif /* SList_h */

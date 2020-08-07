@@ -8,13 +8,18 @@ int main(int argc, const char * argv[]) {
     std::cout << std::boolalpha;
     SList<int> list;
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 3; i++) {
         list.push_front(i*3);
     }
 
 
     std::cout << list << std::endl;
-    std::cout << list.value_at(1) << std::endl;
+    std::cout << list.pop_front() << std::endl;
+    std::cout << list << std::endl;
+    std::cout << list.pop_front() << std::endl;
+    std::cout << list << std::endl;
+    std::cout << list.pop_front() << std::endl;
+    std::cout << list << std::endl;
     return 0;
 }
 
