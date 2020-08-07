@@ -117,5 +117,45 @@ public:
             return ++size;
         }
     }
+     T pop_back () {
+         if (head == nullptr && tail == nullptr) {
+             //if list is empty, throw exception
+             throw std::out_of_range("Error, empty list");
+         }
+
+         if (head == tail) {
+            //if list only has one item left
+            T temp_data = tail->data;
+            //set head and tail to null, decrement size, and return data
+            delete tail;
+            head = nullptr;
+            tail = nullptr;
+            size--;
+            return temp_data;
+         } else {
+             //list has more than one item
+            T temp_data = tail->data;
+            SListNode<T>* temp_node = tail;
+            //search for item that preceeds tail
+            SListNode<T>* preceed_tail = head;
+            while (preceed_tail->next->next != nullptr) {
+                preceed_tail = preceed_tail->next;
+            }
+            //set next of preceeding tail to null
+            preceed_tail->next = nullptr;
+            //preceed tail becomes tail
+            tail = preceed_tail;
+            //delete former tail
+            delete temp_node;
+            //return former data
+            return temp_data;
+         }
+    }
+    T front() {
+        return head->data;
+    }
+    T back() {
+        return tail->data;
+    }
 };
 #endif /* SList_h */
