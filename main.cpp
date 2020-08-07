@@ -7,12 +7,14 @@
 int main(int argc, const char * argv[]) {
     std::cout << std::boolalpha;
     SList<int> list;
-    list.push_front(2);
-    list.push_front(6);
-    list.push_front(5);
-    list.push_front(0);
+
+    for (int i = 0; i < 5; i++) {
+        list.push_front(i*3);
+    }
+
 
     std::cout << list << std::endl;
+    std::cout << list.value_at(1) << std::endl;
     return 0;
 }
 
