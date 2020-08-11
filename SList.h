@@ -39,7 +39,7 @@ public:
         return size == 0;
     }
     T value_at(int index) {
-        if (index < size) {
+        if (index < size && index >= 0) {
             SListNode<T>* current_node = head;
             for (int pos = 0; pos < index; pos++) {
                 //traverse for pos < index
@@ -50,21 +50,21 @@ public:
             throw std::out_of_range("Error, index does not exist");
         }
     }
-    void push_front (T val) {
+    int push_front (T val) {
         SListNode<T>* new_node = new SListNode <T>(val);
         if (head == nullptr && tail == nullptr) {
             //if list is empty
             //point head and tail to new node
             head = new_node;
             tail = new_node;
-            size++;
+            return ++size;
         } else {
             //if list is not empty
             //head gets pushed behind new node
             new_node->next = head;
             //new node becomes head
             head = new_node;
-            size++;
+            return ++size;
         }
     }
     T pop_front () {
@@ -151,11 +151,36 @@ public:
             return temp_data;
          }
     }
-    T front() {
+    T front () {
         return head->data;
     }
-    T back() {
+    T back () {
         return tail->data;
+    }
+    int insert (int index, T value) {
+        if (index >= size || index < 0) {
+            //throw error if index is out of range
+            throw std::out_of_range("Error, invalid index");
+        }
+
+        if (index == 0) {
+            return push_front(value);
+        } else {
+            //track current index
+            int curr_idx = 0;
+            //create new node
+            SListNode<T>* new_node = new SListNode<T>(value);
+            //iterate through nodes and stop at previous idx
+            SListNode<T>* preceed_idx = head;
+            while (curr_idx < (index - 1)) {
+                preceed_idx = preceed_idx->next;
+                curr_idx++;
+            }
+            //point new node's next to the previous item at index
+            new_node->next = preceed_idx->next;
+            preceed_idx->next = new_node;
+            return ++size;
+        }
     }
 };
 #endif /* SList_h */
