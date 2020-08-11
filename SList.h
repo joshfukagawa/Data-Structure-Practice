@@ -208,5 +208,22 @@ public:
             return temp_data;
         }
     }
+    T n_from_end(int n) {
+        if (n > size || n < 1) {
+            //throw error if index is out of range (size must be at least 1)
+            throw std::out_of_range("Error, invalid n");
+        }
+
+        //track current item num
+            int curr_index = 0;
+            //iterate through nodes and stop at previous idx
+            SListNode<T>* curr_node = head;
+            while (size - curr_index != n) {
+                curr_node = curr_node->next;
+                curr_index++;
+            }
+
+            return curr_node->data;
+    }
 };
 #endif /* SList_h */
