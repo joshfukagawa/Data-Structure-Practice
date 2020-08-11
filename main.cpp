@@ -14,7 +14,7 @@ int main(int argc, const char * argv[]) {
 
 
     std::cout << list << std::endl;
-    std::cout << list.insert(2, 999999) << std::endl;
+    std::cout << list.erase(0) << std::endl;
     std::cout << list << std::endl;
     return 0;
 }

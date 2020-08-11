@@ -159,7 +159,7 @@ public:
     }
     int insert (int index, T value) {
         if (index >= size || index < 0) {
-            //throw error if index is out of range
+            //throw error if index is out of range (size must be at least 1)
             throw std::out_of_range("Error, invalid index");
         }
 
@@ -180,6 +180,32 @@ public:
             new_node->next = preceed_idx->next;
             preceed_idx->next = new_node;
             return ++size;
+        }
+    }
+        T erase (int index) {
+        if (index >= size || index < 0) {
+            //throw error if index is out of range (size must be at least 1)
+            throw std::out_of_range("Error, invalid index");
+        }
+
+        if (index == 0) {
+            return pop_front();
+        } else {
+            //track current index
+            int curr_idx = 0;
+            //iterate through nodes and stop at previous idx
+            SListNode<T>* preceed_idx = head;
+            while (curr_idx < (index - 1)) {
+                preceed_idx = preceed_idx->next;
+                curr_idx++;
+            }
+            //save temporary reference to target and data
+            SListNode<T>* target = preceed_idx->next;
+            T temp_data = target->data;
+            //point preceeding node's next to the item after
+            preceed_idx->next = target->next;
+            delete target;
+            return temp_data;
         }
     }
 };
