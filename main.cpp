@@ -14,7 +14,7 @@ int main(int argc, const char * argv[]) {
 
 
     std::cout << list << std::endl;
-    list.reverse();
+    std::cout << list.remove(35) << std::endl;
     std::cout << list << std::endl;
     return 0;
 }

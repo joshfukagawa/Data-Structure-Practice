@@ -263,5 +263,38 @@ public:
 
         return;
     }
+    int remove(T val) {
+        int index = 0;
+        SListNode<T>* curr_node = head;
+        if (head == nullptr && tail == nullptr) {
+            return -1;
+        }
+
+        if (curr_node->data == val) {
+            SListNode<T>* node_to_delete = head;
+            head = head->next;
+            delete node_to_delete;
+            size--;
+            return index;
+        }
+
+        while(curr_node != nullptr) {
+            if (curr_node->next != nullptr && curr_node->next->data == val) {
+                SListNode<T>* node_to_delete = curr_node->next;
+                //if next node contains data, remove it
+                curr_node->next = curr_node->next->next;
+                if (tail == node_to_delete) {
+                    //adjust tail if you deleted it
+                    tail = curr_node->next;
+                }
+                delete node_to_delete;
+                size--;
+                return (index + 1);
+            }
+            curr_node = curr_node->next;
+            index++;
+        }
+        return -1;
+    }
 };
 #endif /* SList_h */
