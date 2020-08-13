@@ -8,13 +8,13 @@ int main(int argc, const char * argv[]) {
     std::cout << std::boolalpha;
     SList<int> list;
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 7; i++) {
         list.push_back((i + 1) * 5);
     }
 
 
     std::cout << list << std::endl;
-    std::cout << list.n_from_end(4) << std::endl;
+    list.reverse();
     std::cout << list << std::endl;
     return 0;
 }

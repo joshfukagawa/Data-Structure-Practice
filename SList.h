@@ -225,5 +225,43 @@ public:
 
             return curr_node->data;
     }
+    void reverse () {
+        if (head == tail) {
+            return;
+        } else if (head->next == tail) {
+            SListNode<T>* swap_temp;
+            head->next = nullptr;
+            tail->next = head;
+            head = tail;
+            tail = head->next;
+            return;
+        } else if (head == nullptr && tail == nullptr) {
+            return;
+        }
+        SListNode<T>* prev_head = head;
+        SListNode<T>* prev_node = head;
+        SListNode<T>* curr_node = head->next;
+        SListNode<T>* temp = head->next->next;
+
+        while(true) {
+            if (prev_node == head) {
+                prev_node->next = nullptr;
+            }
+            curr_node->next = prev_node;
+            prev_node = curr_node;
+            curr_node = temp;
+            if (temp->next == nullptr) {
+                break;
+            } else {
+                temp = temp->next;
+            }
+        }
+
+        curr_node->next = prev_node;
+        head = tail;
+        tail = prev_head;
+
+        return;
+    }
 };
 #endif /* SList_h */
