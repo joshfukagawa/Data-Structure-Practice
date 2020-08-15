@@ -14,6 +14,10 @@ int main(int argc, const char * argv[]) {
         std::cout << q << std::endl;
     }
 
+    for (int i = 0; i < 7; i++) {
+        q.dequeue();
+        std::cout << q << std::endl;
+    }
 
     return 0;
 }

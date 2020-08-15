@@ -46,5 +46,27 @@ public:
 
       return ++size;
     }
+    T dequeue() {
+       if (head == nullptr && tail == nullptr) {
+        //if queue is empty throw exception
+        throw std::length_error("Error, the queue is empty");
+      } else if (head == tail) {
+        //dequeue last item in list
+        T temp_data = head->data;
+        delete head;
+        head = nullptr;
+        tail = nullptr;
+        return temp_data;
+      } else {
+        //dequeue next item in list
+        //save temp ref to node and data
+        T temp_data = head->data;
+        SListNode<T>* temp_node = head;
+        //set head to next node
+        head = head->next;
+        delete temp_node;
+        return temp_data;
+      }
+    }
 };
 #endif /* DynamicQueue_h */
