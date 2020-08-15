@@ -1,21 +1,20 @@
 #include <iostream>
 #include "Array.h"
 #include "SList.h"
+#include "DynamicQueue.h"
 #include <vector>
 #include <cstdlib>
 
 int main(int argc, const char * argv[]) {
     std::cout << std::boolalpha;
-    SList<int> list;
+    DynamicQueue<int> q;
 
     for (int i = 0; i < 7; i++) {
-        list.push_back((i + 1) * 5);
+        q.enqueue((i + 1));
+        std::cout << q << std::endl;
     }
 
 
-    std::cout << list << std::endl;
-    std::cout << list.remove(35) << std::endl;
-    std::cout << list << std::endl;
     return 0;
 }
 
