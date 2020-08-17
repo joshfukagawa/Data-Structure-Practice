@@ -68,5 +68,8 @@ public:
         return temp_data;
       }
     }
+    bool empty() {
+      return (head == nullptr && tail == nullptr);
+    }
 };
 #endif /* DynamicQueue_h */

@@ -2,22 +2,26 @@
 #include "Array.h"
 #include "SList.h"
 #include "DynamicQueue.h"
+#include "FixedQueue.h"
 #include <vector>
 #include <cstdlib>
 
 int main(int argc, const char * argv[]) {
     std::cout << std::boolalpha;
-    DynamicQueue<int> q;
+    FixedQueue<int> q(3);
 
-    for (int i = 0; i < 7; i++) {
-        q.enqueue((i + 1));
-        std::cout << q << std::endl;
-    }
-
-    for (int i = 0; i < 7; i++) {
-        q.dequeue();
-        std::cout << q << std::endl;
-    }
+    q.enqueue(1);
+    q.enqueue(2);
+    std::cout << q.dequeue() << " was removed!" << std::endl;
+    q.enqueue(3);
+    q.enqueue(4);
+    std::cout << q.dequeue() << " was removed!" << std::endl;
+    std::cout << q.dequeue() << " was removed!" << std::endl;
+    std::cout << q.dequeue() << " was removed!" << std::endl;
+    q.enqueue(5);
+    q.enqueue(6);
+    std::cout << q.dequeue() << " was removed!" << std::endl;
+    std::cout << q.dequeue() << " was removed!" << std::endl;
 
     return 0;
 }
